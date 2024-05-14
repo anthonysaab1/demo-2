@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="welcome.css"></link>
+  </head>
+  <body>
+    <p id="welcome"></p>
+    <div class="loader" id="loader"></div>
+    <input type="text" id="userId" placeholder="userId" readonly></input><br><br>
+    <input type="text" id="userName" placeholder="Task Name" ></input><br><br>
+    <div id="completed">
+    <input type="checkbox" id="isCompleted"> </input> <label for="isCompleted">Completed</label><br><br></div>
+    <button type="button" id="addBtn">Add To Table</button><br><br>
+    <button type="button" id="saveBtn">Save</button><br><br>
+  
+    <span id="errorMsg"></span>
+    <table id="mainTable">
+      <tr>
+        <td class="taskName">Task Name</td>
+        <td>Completed</td>
+        <td>Edit</td>
+        <td>Delete</td>
+      </tr>
+    </table>
+    <button type="button" id="logoutBtn">Logout</button><br><br>
+    <script src="welcome.js"></script>
+  </body>
+</html>

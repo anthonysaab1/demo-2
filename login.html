@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <title>Login</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link href="styleLogin.css" rel="stylesheet"></link>
+  </head>
+  <body>
+    <div class="background">
+      <div class="shape"></div>
+      <div class="shape"></div>
+    </div>
+    <form>
+      <h3>Login Here</h3>
+
+      <label for="username">Username</label>
+      <input type="text" placeholder="Email" id="username" />
+
+      <label for="password">Password</label>
+      <input type="password" placeholder="Password" id="password" /><img src="icons/eye-regular.svg" width="20px" height="20px" id="showPass">
+
+      <button type="button" id="loginBtn">Log In</button>
+    </form>
+    
+
+
+
+
+<div id="myModal" class="modal">
+
+
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <img src="icons/circle-exclamation-solid.svg" alt="error" id="errorImg">
+    </div>
+    <div class="modal-body">
+      <p class="errorMsg">UserName or Password</p>
+      <p class="errorMsg">Wrong</p>
+    </div>
+      </div>
+
+</div>
+    <script src="login.js"></script>
+  </body>
+</html>

@@ -1,0 +1,93 @@
+#todo {
+  font-size: 40px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-left: 100px;
+}
+#tableOfTodo {
+  width: auto;
+  margin-top: 50px;
+  margin-left: 100px;
+}
+tr:first-child {
+  background-color: rgb(184, 184, 184);
+}
+td:first-of-type {
+  padding-left: 20px;
+}
+
+#deleteBtn,
+#editBtn {
+  margin-right: 30px;
+  width: 20px;
+  cursor: pointer;
+}
+#checkBtn,
+#spanBtn {
+  margin-right: 30px;
+  width: 20px;
+}
+#secondeDesc {
+  padding-left: 10px;
+}
+#firstDesc {
+  padding-right: 40px;
+}
+#text {
+  margin-left: 100px;
+}
+#idInput,
+#titleInput {
+  margin-left: 100px;
+  width: 200px;
+  height: 30px;
+  border: 2px solid black;
+}
+#saveBtn {
+  display: none;
+  margin-left: 100px;
+  width: 100px;
+  height: 40px;
+  background-color: green;
+  color: wheat;
+  border: none;
+  cursor: pointer;
+}
+#addBtn {
+  margin-left: 100px;
+  width: 100px;
+  height: 40px;
+  background-color: rgb(128, 0, 0);
+  color: wheat;
+  border: none;
+  cursor: pointer;
+}
+
+#check {
+  display: none;
+  margin-left: 100px;
+}
+#errorMsg {
+  margin-left: 100px;
+  font-size: 30px;
+  color: red;
+  font-weight: bold;
+}
+#searchBar {
+  margin-left: 100px;
+  padding: 5px;
+}
+#searchBtn {
+  height: 30px;
+  background-color: blue;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+#logoutBtn {
+  margin-left: 100px;
+  height: 30px;
+  border: none;
+  background-color: rgb(175, 0, 0);
+  color: white;
+}
