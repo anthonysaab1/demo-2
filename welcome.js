@@ -29,7 +29,7 @@ const editDataLS = localStorage.editData
   : [];
 
 let editData = [];
-let editDataObj = localStorage.editDta ? JSON.parse(editData) : {};
+let editDataObj = {};
 outputMsg.textContent = `Welcome ${localStorage.lastname}`;
 logoutBtn.addEventListener("click", () => {
   localStorage.clear();
