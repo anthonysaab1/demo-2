@@ -9,6 +9,7 @@ let saveBtn = document.getElementById("saveBtn");
 let addBtn = document.getElementById("addBtn");
 let errorMsg = document.getElementById("errorMsg");
 const loader = document.getElementById("loader");
+const userid = getQueryParam("userId");
 let allData = [];
 let userId;
 let allEditedData = [];
@@ -28,6 +29,7 @@ logoutBtn.addEventListener("click", () => {
   window.location.href = "login.html";
 });
 loader.style.display = "block";
+console.log(decodeURIComponent(userid));
 fetch("https://jsonplaceholder.typicode.com/todos")
   .then((response) => response.json())
   .then((data) => {
@@ -61,7 +63,7 @@ function createTable(todo) {
   loader.style.display = "block";
   if (
     deletedItem.includes(todo.id) ||
-    todo.userId != JSON.parse(localStorage.id)
+    todo.userId != decodeURIComponent(userid)
   ) {
     return;
   }
@@ -254,6 +256,10 @@ function falsy() {
   isCompleted.disabled = false;
   loader.style.display = "none";
   saveBtn.style.display = "none";
+}
+function getQueryParam(param) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(param);
 }
 
 let unCompletedMark = `<svg

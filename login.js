@@ -13,7 +13,7 @@ fetch("https://jsonplaceholder.typicode.com/users")
     allData = data;
     console.log(data);
   });
-loginBtn.addEventListener("click", () => {
+loginBtn.addEventListener("click", function (event) {
   allData.forEach((person) => {
     if (person.username === userName.value && person.name === passWord.value) {
       localStorage.setItem("lastname", userName.value);
@@ -22,6 +22,10 @@ loginBtn.addEventListener("click", () => {
       passWord.value = "";
       userName.value = "";
       verification = true;
+      event.preventDefault();
+      const userId = person.id;
+      window.location.href =
+        "welcome.html?userId=" + encodeURIComponent(userId);
     }
     if (userName.value == "admin" && passWord.value == "admin") {
       localStorage.setItem("lastname", userName.value);
