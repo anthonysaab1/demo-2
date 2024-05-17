@@ -23,9 +23,8 @@ loginBtn.addEventListener("click", function (event) {
       userName.value = "";
       verification = true;
       event.preventDefault();
-      const userId = person.id;
       window.location.href =
-        "welcome.html?userId=" + encodeURIComponent(userId);
+        "welcome.html?userId=" + encodeURIComponent(person.id);
     }
     if (userName.value == "admin" && passWord.value == "admin") {
       localStorage.setItem("lastname", userName.value);
@@ -37,7 +36,6 @@ loginBtn.addEventListener("click", function (event) {
     }
     if (!verification) {
       modal.style.display = "block";
-
       span.onclick = function () {
         modal.style.display = "none";
       };
