@@ -5,4 +5,4 @@ some data
 ## local 2
 
 1 open index
-2 have fun
+2 have funss
