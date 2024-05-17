@@ -10,6 +10,8 @@ let addBtn = document.getElementById("addBtn");
 let errorMsg = document.getElementById("errorMsg");
 const loader = document.getElementById("loader");
 const userid = getQueryParam("userId");
+let span = document.getElementsByClassName("close")[0];
+let modal = document.getElementById("myModal");
 let allData = [];
 let userId;
 let allEditedData = [];
@@ -29,7 +31,6 @@ logoutBtn.addEventListener("click", () => {
   window.location.href = "login.html";
 });
 loader.style.display = "block";
-console.log(decodeURIComponent(userid));
 fetch("https://jsonplaceholder.typicode.com/todos")
   .then((response) => response.json())
   .then((data) => {
@@ -100,7 +101,8 @@ function editfunc(editBtn, todo) {
     taskName.value = todoRow.children[0].textContent;
     addBtn.style.display = "none";
     saveBtn.style.display = "block";
-    isCompleted.checked = isCompleted.disabled = todo.completed;
+    isCompleted.checked = todo.completed;
+    isCompleted.disabled = todo.completed;
   });
 }
 //Save btn
@@ -261,7 +263,19 @@ function getQueryParam(param) {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get(param);
 }
+if (decodeURIComponent(userid) > 10) {
+  modal.style.display = "block";
+  span.onclick = function () {
+    modal.style.display = "none";
+  };
 
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+  errorMsg.textContent = `UserId Not Include`;
+}
 let unCompletedMark = `<svg
 xmlns="http://www.w3.org/2000/svg"
 viewBox="0 0 384 512"
