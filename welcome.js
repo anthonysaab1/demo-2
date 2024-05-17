@@ -107,7 +107,7 @@ saveBtn.addEventListener("click", async function addObject() {
   let todoRow = document.getElementById(userIdCheck.value);
   let completed;
 
-  if (taskName.value.length == 0) {
+  if (!taskName.value.length) {
     errorMsg.textContent = "Hit the pen button";
     return;
   }
@@ -212,7 +212,7 @@ function deleteFunc(trashBtn, todo) {
 //Add to table
 let LSidAdded = localStorage.idAdded ? JSON.parse(localStorage.idAdded) : 200;
 addBtn.addEventListener("click", function addObjectTotable() {
-  if (taskName.value.length == 0) {
+  if (!taskName.value.length) {
     errorMsg.textContent = "Empty Title Name";
     return;
   }
