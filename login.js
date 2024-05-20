@@ -17,7 +17,7 @@ loginBtn.addEventListener("click", function (event) {
   allData.forEach((person) => {
     if (person.username === userName.value && person.name === passWord.value) {
       localStorage.setItem("lastname", userName.value);
-      localStorage.setItem("id", JSON.stringify(person.id));
+
       window.location.href = "welcome.html";
       passWord.value = "";
       userName.value = "";
@@ -28,7 +28,7 @@ loginBtn.addEventListener("click", function (event) {
     }
     if (userName.value == "admin" && passWord.value == "admin") {
       localStorage.setItem("lastname", userName.value);
-      localStorage.setItem("id", JSON.stringify(person.id));
+
       window.location.href = "index.html";
       passWord.value = "";
       userName.value = "";
@@ -49,7 +49,7 @@ loginBtn.addEventListener("click", function (event) {
   });
 });
 showPass.addEventListener("click", () => {
-  if (passWord.type === "password") {
+  if (passWord.type == "password") {
     passWord.type = "text";
   } else {
     passWord.type = "password";

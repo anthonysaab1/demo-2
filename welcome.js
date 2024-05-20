@@ -95,7 +95,7 @@ function createTable(todo) {
 }
 
 function editfunc(editBtn, todo) {
-  editBtn.addEventListener("click", async function editObjectById() {
+  editBtn.addEventListener("click", () => {
     userIdCheck.value = todo.id;
     let todoRow = document.getElementById(userIdCheck.value);
     taskName.value = todoRow.children[0].textContent;
@@ -106,12 +106,12 @@ function editfunc(editBtn, todo) {
   });
 }
 //Save btn
-saveBtn.addEventListener("click", async function addObject() {
+saveBtn.addEventListener("click", () => {
   loader.style.display = "block";
   let todoRow = document.getElementById(userIdCheck.value);
   let completed;
 
-  allData.forEach((todo) => {
+  allEditedData.forEach((todo) => {
     if (todo.title == taskName.value && isCompleted.checked == todo.completed) {
       taskName.value = "";
       addBtn.style.display = "block";
@@ -119,7 +119,6 @@ saveBtn.addEventListener("click", async function addObject() {
     }
 
     if (todo.id == userIdCheck.value) {
-      localStorage.setItem("taskId", userIdCheck.value);
       if (isCompleted.checked) {
         todoRow.children[1].innerHTML = completedMark;
         todo.completed = true;
@@ -168,7 +167,7 @@ saveBtn.addEventListener("click", async function addObject() {
 //Delete
 function deleteFunc(trashBtn, todo) {
   let todoRow = document.getElementById(todo.id);
-  trashBtn.addEventListener("click", async function deleteObjectById() {
+  trashBtn.addEventListener("click", async () => {
     trashBtn.disabled = true;
 
     loader.style.display = "block";
@@ -186,11 +185,9 @@ function deleteFunc(trashBtn, todo) {
       if (!response.ok) {
         throw new Error(`Failed to delete object with ID ${todo.id}`);
       } else {
-        allData = allData.filter((element) => {
-          element.id !== todo.id;
+        allData = allData.filter((data) => {
+          data.id !== todo.id;
         });
-        console.log(allData);
-
         deletedItem.push(todo.id);
         localStorage.setItem("deletedItem", JSON.stringify(deletedItem));
         MainTable.removeChild(todoRow);
@@ -204,7 +201,7 @@ function deleteFunc(trashBtn, todo) {
 //
 //Add to table
 let LSidAdded = localStorage.idAdded ? JSON.parse(localStorage.idAdded) : 200;
-addBtn.addEventListener("click", function addObjectTotable() {
+addBtn.addEventListener("click", () => {
   if (!taskName.value.length) {
     errorMsg.textContent = "Empty Title Name";
     return;
@@ -230,7 +227,7 @@ addBtn.addEventListener("click", function addObjectTotable() {
     .then((response) => response.json())
     .then((json) => console.log(json));
   addedObj = {
-    userId: userId,
+    userId: userid,
     id: LSidAdded,
     title: taskName.value,
     completed,
@@ -247,6 +244,7 @@ function falsy() {
   isCompleted.disabled = false;
   loader.style.display = "none";
   saveBtn.style.display = "none";
+  errorMsg.textContent = ``;
 }
 function getQueryParam(param) {
   const urlParams = new URLSearchParams(window.location.search);
