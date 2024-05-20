@@ -111,33 +111,22 @@ saveBtn.addEventListener("click", async function addObject() {
   let todoRow = document.getElementById(userIdCheck.value);
   let completed;
 
-  if (!taskName.value.length) {
-    errorMsg.textContent = "Hit the pen button";
-    return;
-  }
   allData.forEach((todo) => {
-    if (todo.title == taskName.value) {
-      falsy();
+    if (todo.title == taskName.value && isCompleted.checked == todo.completed) {
       taskName.value = "";
       addBtn.style.display = "block";
       return;
     }
 
-    if (isCompleted.checked) {
-      todoRow.children[1].innerHTML = completedMark;
-      todo.completed = true;
-      completed = true;
-    } else {
-      completed = false;
-    }
-
-    if (todo.title == taskName.value) {
-      taskName.value = "";
-      addBtn.style.display = "";
-      return;
-    }
     if (todo.id == userIdCheck.value) {
       localStorage.setItem("taskId", userIdCheck.value);
+      if (isCompleted.checked) {
+        todoRow.children[1].innerHTML = completedMark;
+        todo.completed = true;
+        completed = true;
+      } else {
+        completed = false;
+      }
       fetch(
         `https://jsonplaceholder.typicode.com/posts/${userIdCheck.value}`,
 
@@ -175,7 +164,7 @@ saveBtn.addEventListener("click", async function addObject() {
   falsy();
 });
 //
-////////
+
 //Delete
 function deleteFunc(trashBtn, todo) {
   let todoRow = document.getElementById(todo.id);
@@ -263,7 +252,11 @@ function getQueryParam(param) {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get(param);
 }
-if (decodeURIComponent(userid) > 10) {
+if (
+  decodeURIComponent(userid) > 10 ||
+  isNaN(decodeURIComponent(userid)) ||
+  decodeURIComponent(userid) <= 0
+) {
   modal.style.display = "block";
   span.onclick = function () {
     modal.style.display = "none";
@@ -276,6 +269,7 @@ if (decodeURIComponent(userid) > 10) {
   };
   errorMsg.textContent = `UserId Not Include`;
 }
+
 let unCompletedMark = `<svg
 xmlns="http://www.w3.org/2000/svg"
 viewBox="0 0 384 512"
