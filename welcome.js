@@ -1,17 +1,17 @@
-let logoutBtn = document.getElementById("logoutBtn");
-let outputMsg = document.getElementById("welcome");
-let MainTable = document.getElementById("mainTable");
-let divComplete = document.getElementById("completed");
-let isCompleted = document.getElementById("isCompleted");
-let taskName = document.getElementById("userName");
-let userIdCheck = document.getElementById("userId");
-let saveBtn = document.getElementById("saveBtn");
-let addBtn = document.getElementById("addBtn");
-let errorMsg = document.getElementById("errorMsg");
+const logoutBtn = document.getElementById("logoutBtn");
+const outputMsg = document.getElementById("welcome");
+const MainTable = document.getElementById("mainTable");
+const divComplete = document.getElementById("completed");
+const isCompleted = document.getElementById("isCompleted");
+const taskName = document.getElementById("userName");
+const userIdCheck = document.getElementById("userId");
+const saveBtn = document.getElementById("saveBtn");
+const addBtn = document.getElementById("addBtn");
+const errorMsg = document.getElementById("errorMsg");
 const loader = document.getElementById("loader");
 const userid = getQueryParam("userId");
-let span = document.getElementsByClassName("close")[0];
-let modal = document.getElementById("myModal");
+const span = document.getElementsByClassName("close")[0];
+const modal = document.getElementById("myModal");
 let allData = [];
 let userId;
 let allEditedData = [];
@@ -36,17 +36,13 @@ fetch("https://jsonplaceholder.typicode.com/todos")
   .then((data) => {
     allData = data;
     allEditedData = data;
-    let addDataLs = localStorage.addItem
-      ? JSON.parse(localStorage.addItem)
-      : [];
-    for (let i = 0; i < addDataLs.length; i++) {
-      data.push(addDataLs[i]);
+    for (let i = 0; i < addedTable.length; i++) {
+      data.push(addedTable[i]);
     }
 
     data.forEach((todo) => {
       createTable(todo);
     });
-
     loader.style.display = "none";
   });
 
@@ -203,7 +199,7 @@ function deleteFunc(trashBtn, todo) {
 let LSidAdded = localStorage.idAdded ? JSON.parse(localStorage.idAdded) : 200;
 addBtn.addEventListener("click", () => {
   if (!taskName.value.length) {
-    errorMsg.textContent = "Empty Title Name";
+    errorMsg.textContent = "Empty Task Name";
     return;
   }
   loader.style.display = "block";
